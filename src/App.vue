@@ -1,15 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div>
+  <h1>State Management Demo</h1>
+</div>
+<CounterWithVuex />
+<CounterHistoryWithVuex />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CounterWithVuex from './components/CounterWithVuex.vue';
+import CounterHistoryWithVuex from './components/CounterHistoryWithVuex.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CounterWithVuex,
+    CounterHistoryWithVuex
+  },
+  data() {
+    return {
+      countHistory: []
+    }
+  },
+  methods: {
+    onCountChanged(event) {
+      this.countHistory.push(event);
+    }
   }
 }
 </script>
